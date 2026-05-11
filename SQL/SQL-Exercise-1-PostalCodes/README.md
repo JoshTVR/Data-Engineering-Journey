@@ -10,7 +10,7 @@ Dataset: `CodigosPostalesMX` — tablas ESTADO, MUNICIPIO, ASENTAMIENTO, CIUDAD,
 select * from MEXICO_CP.ESTADO;
 ```
 
-![Query 1](assets/query-01.png)
+![Query 1](Assets/query-01.png)
 
 ---
 
@@ -20,7 +20,7 @@ select * from MEXICO_CP.ESTADO;
 select ESTADO.name from MEXICO_CP.ESTADO;
 ```
 
-![Query 2](assets/query-02.png)
+![Query 2](Assets/query-02.png)
 
 ---
 
@@ -30,7 +30,7 @@ select ESTADO.name from MEXICO_CP.ESTADO;
 select MEXICO_CP.MUNICIPIO.name from MEXICO_CP.MUNICIPIO;
 ```
 
-![Query 3](assets/query-03.png)
+![Query 3](Assets/query-03.png)
 
 ---
 
@@ -40,7 +40,7 @@ select MEXICO_CP.MUNICIPIO.name from MEXICO_CP.MUNICIPIO;
 select name, CODIGO_POSTAL from MEXICO_CP.ASENTAMIENTO;
 ```
 
-![Query 4](assets/query-04.png)
+![Query 4](Assets/query-04.png)
 
 ---
 
@@ -52,7 +52,7 @@ from MEXICO_CP.ASENTAMIENTO
 where CODIGO_POSTAL = '01000';
 ```
 
-![Query 5](assets/query-05.png)
+![Query 5](Assets/query-05.png)
 
 ---
 
@@ -64,7 +64,7 @@ from MEXICO_CP.ESTADO as e
 inner join MEXICO_CP.MUNICIPIO as m on m.fk_ESTADO = e.id;
 ```
 
-![Query 6](assets/query-06.png)
+![Query 6](Assets/query-06.png)
 
 ---
 
@@ -77,7 +77,7 @@ inner join MEXICO_CP.MUNICIPIO as m on a.fk_MUNICIPIO = m.id
 order by m.id;
 ```
 
-![Query 7](assets/query-07.png)
+![Query 7](Assets/query-07.png)
 
 ---
 
@@ -89,7 +89,7 @@ from MEXICO_CP.ASENTAMIENTO as a
 inner join MEXICO_CP.TIPO_ASENTAMIENTO as t on t.id = a.fk_TIPO_ASENTAMIENTO;
 ```
 
-![Query 8](assets/query-08.png)
+![Query 8](Assets/query-08.png)
 
 ---
 
@@ -103,7 +103,7 @@ inner join MEXICO_CP.ASENTAMIENTO as a on m.id = a.fk_MUNICIPIO
 inner join MEXICO_CP.CIUDAD as c on a.fk_CIUDAD = c.id;
 ```
 
-![Query 9](assets/query-09.png)
+![Query 9](Assets/query-09.png)
 
 ---
 
@@ -116,7 +116,7 @@ inner join MEXICO_CP.ASENTAMIENTO as a on m.id = a.fk_MUNICIPIO
 where a.fk_MUNICIPIO = 5;
 ```
 
-![Query 10](assets/query-10.png)
+![Query 10](Assets/query-10.png)
 
 ---
 
@@ -129,7 +129,7 @@ inner join MEXICO_CP.MUNICIPIO as m on m.fk_ESTADO = e.id
 group by e.name;
 ```
 
-![Query 11](assets/query-11.png)
+![Query 11](Assets/query-11.png)
 
 ---
 
@@ -142,7 +142,7 @@ inner join MEXICO_CP.MUNICIPIO as m on m.fk_ESTADO = e.id
 group by e.name;
 ```
 
-![Query 12](assets/query-12.png)
+![Query 12](Assets/query-12.png)
 
 ---
 
@@ -156,7 +156,7 @@ group by e.name
 having Count(*) >= 20;
 ```
 
-![Query 13](assets/query-13.png)
+![Query 13](Assets/query-13.png)
 
 ---
 
@@ -170,7 +170,7 @@ group by m.name
 having Count(*) >= 50;
 ```
 
-![Query 14](assets/query-14.png)
+![Query 14](Assets/query-14.png)
 
 ---
 
@@ -183,7 +183,7 @@ inner join MEXICO_CP.TIPO_ASENTAMIENTO as [at] on a.fk_MUNICIPIO = at.id
 group by [at].name;
 ```
 
-![Query 15](assets/query-15.png)
+![Query 15](Assets/query-15.png)
 
 ---
 
@@ -199,7 +199,7 @@ inner join MEXICO_CP.CIUDAD as c on a.fk_CIUDAD = c.id
 inner join MEXICO_CP.TIPO_ASENTAMIENTO as [at] on a.fk_TIPO_ASENTAMIENTO = [at].id;
 ```
 
-![Query 16](assets/query-16.png)
+![Query 16](Assets/query-16.png)
 
 ---
 
@@ -211,7 +211,7 @@ from MEXICO_CP.ASENTAMIENTO as a
 where a.CODIGO_POSTAL LIKE '44___';
 ```
 
-![Query 17](assets/query-17.png)
+![Query 17](Assets/query-17.png)
 
 ---
 
@@ -224,7 +224,7 @@ inner join MEXICO_CP.MUNICIPIO as m on m.fk_ESTADO = e.id
 where e.name = 'Jalisco';
 ```
 
-![Query 18](assets/query-18.png)
+![Query 18](Assets/query-18.png)
 
 ---
 
@@ -238,7 +238,7 @@ group by e.name
 order by count(*) DESC;
 ```
 
-![Query 19](assets/query-19.png)
+![Query 19](Assets/query-19.png)
 
 ---
 
@@ -252,4 +252,4 @@ group by m.name
 order by COUNT(*) desc;
 ```
 
-![Query 20](assets/query-20.png)
+![Query 20](Assets/query-20.png)

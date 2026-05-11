@@ -67,14 +67,12 @@ inner join
 MEXICO_CP.TIPO_ASENTAMIENTO as t
 on t.id = a.fk_TIPO_ASENTAMIENTO;
 
--- 9. Muestra ciudad, municipio y estado en una sola consulta.
 
 select * from MEXICO_CP.ESTADO;
 select * from MEXICO_CP.MUNICIPIO;
 select * from MEXICO_CP.ASENTAMIENTO
 select * from MEXICO_CP.CIUDAD;
-
-
+-- 9. Muestra ciudad, municipio y estado en una sola consulta.
 select 
 e.name as 'Estado',
 m.name as 'Municipio',
@@ -155,8 +153,92 @@ group by m.name
 having Count(*) >=50;
 
 -- 15. Lista los tipos de asentamiento y cuántos asentamientos hay de cada tipo.
+
+-- select * from MEXICO_CP.ASENTAMIENTO
+-- select * from MEXICO_CP.TIPO_ASENTAMIENTO
+
+select 
+[at].[name] as 'Tipos de Asentamientos',
+Count(*) as 'Asentamientos totales'
+from
+MEXICO_CP.ASENTAMIENTO as a
+inner join
+MEXICO_CP.TIPO_ASENTAMIENTO as [at]
+on a.fk_MUNICIPIO = at.id
+group by [at].name;
+
 -- 16. Muestra asentamiento, tipo, municipio, ciudad y estado en una sola consulta.
+
+select 
+m.name as 'Municipio',
+[at].name as 'Tipo de Municipio',
+e.name as 'Estado',
+c.name as 'Ciudad'
+from 
+MEXICO_CP.ESTADO as e
+inner join 
+MEXICO_CP.MUNICIPIO as m
+on m.fk_ESTADO = e.id 
+inner join
+MEXICO_CP.ASENTAMIENTO as a
+on m.id = a.fk_MUNICIPIO
+inner join 
+MEXICO_CP.CIUDAD as c
+on a.fk_CIUDAD = c.id
+inner join MEXICO_CP.TIPO_ASENTAMIENTO as [at]
+on a.fk_TIPO_ASENTAMIENTO = [at].id;
+
 -- 17. Obtén los asentamientos cuyo código postal empiece con '44'.
+
+select 
+a.name as 'Asentamiento',
+a.CODIGO_POSTAL as 'Codigo Postal'
+from 
+MEXICO_CP.ASENTAMIENTO as a
+where a.CODIGO_POSTAL LIKE '44___';
+
 -- 18. Muestra los municipios que pertenecen a un estado llamado 'Jalisco'.
+
+-- select * from MEXICO_CP.MUNICIPIO
+
+select 
+e.name as 'Estado',
+m.name 'Municipio'
+from 
+MEXICO_CP.ESTADO as e
+inner join 
+MEXICO_CP.MUNICIPIO as m
+on m.fk_ESTADO = e.id
+where e.name = 'Jalisco';
+
+
 -- 19. Encuentra el estado con mayor número de municipios.
+-- select * from MEXICO_CP.ESTADO
+-- select * from MEXICO_CP.MUNICIPIO
+
+select TOP 1
+e.name as 'Estado',
+count(*) as 'Numero de Municipios'
+-- max(count(fk_ESTADO))
+from 
+MEXICO_CP.ESTADO as e
+inner join 
+MEXICO_CP.MUNICIPIO as m
+on m.fk_ESTADO = e.id
+group by e.name
+order by count(*) DESC
+-- having Count(*) = MAX(COUNT(*));
+
 -- 20. Encuentra el municipio con mayor número de asentamientos y muestra su nombre junto con el total.
+
+
+select top 1
+m.name as 'Municipios',
+Count(*) as 'Numero de Asentamientos'
+from 
+MEXICO_CP.MUNICIPIO as m
+inner join
+MEXICO_CP.ASENTAMIENTO as a
+on m.id = a.fk_MUNICIPIO
+group by m.name
+order by COUNT(*) desc;
