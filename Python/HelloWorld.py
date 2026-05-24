@@ -9,3 +9,5 @@
 print('Hello World!')
 print("Have a good day.")
 print("Learning Python is fun!", "Probably...",sep='  **  ')
+
+print("Learning Python is fun!", '\n' "Probably...",sep='  **  ') #Dynamic paths are very used in a Data Engineering context
