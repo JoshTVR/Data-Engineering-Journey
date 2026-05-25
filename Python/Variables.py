@@ -1,6 +1,3 @@
-
-
-
 # This are variables
 x = 5
 y = 'John'
@@ -32,3 +29,8 @@ print('Cast variables: \n',
       string_one,
       int_one,
       float_one)
+
+print('Cast variables with types: \n',
+      type(string_one),
+      type(int_one),
+      type(float_one))
